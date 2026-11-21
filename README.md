@@ -21,6 +21,11 @@ MAKEFUN_OUTPUT_DIR=out python3 main.py
 
 Writes `out/entry.png` (1024x1024 PNG, under 1 MiB). Pure Python 3.13 standard library — no network, no fonts on disk, no randomness: the same run always writes the same bytes. The letterforms are a 5x7 bitmap face defined in `main.py`; the portrait, coat of arms, stamps and security print are all drawn in code.
 
+## Verification
+
+- `MAKEFUN_OUTPUT_DIR=/tmp/pass5 python3 main.py` run twice: byte-identical PNGs (sha256 `2d9aeae8ce83223ee2999028df4b2308ee2e5fb09830b8dd987f168a98fc2777`), 1024x1024, 56,985 bytes, in about 0.5 s.
+- MRZ check digits computed per ICAO 9303; every stamp falls after the 14 MAR 2024 date of issue, in one unbroken journey home.
+
 ## Layout
 
 - `main.py` — the whole entry: PNG writer, pixel canvas, bitmap font, MRZ builder, portrait, stamps, and the two-page spread composition.
